@@ -1,0 +1,47 @@
+{
+  "name": "btc-api-client",
+  "version": "1.0.0",
+  "description": "Wrapper API for working with btc-api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "compile": "babel server --out-dir dist --delete-dir-on-start --source-maps inline --copy-files",
+    "dev": "nodemon server --exec babel-node --config .nodemonrc.json | pino-pretty",
+    "dev:debug": "nodemon server --exec babel-node --config .nodemonrc.json --inspect | pino-pretty",
+    "test": "mocha --require @babel/register --exit",
+    "test:unit": "npx jest",
+    "test:debug": "mocha --require @babel/register --inspect-brk --exit",
+    "lint": "eslint -c .eslintrc.json {server,test}/**",
+    "lint:fix": "eslint --fix -c .eslintrc.json {server,test}/**"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "pino": "^5.13.4",
+    "swagger-express-middleware": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "chai": "^4.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "mocha": "^6.2.1",
+    "moxios": "^0.4.0",
+    "nodemon": "^1.19.3",
+    "pino-pretty": "^3.2.1",
+    "prettier": "^1.18.2",
+    "supertest": "^4.0.2"
+  },
+  "author": "Daniil Neverov <dvneverov@gmail.com> (https://github.com/dvneverov)"
+}

@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: btc-api-client
+  description: Wrapper API for working with btc-api
+basePath: /api/v1
+tags:
+  - name: Address
+    description: Address endpoints
+  - name: Transaction
+    description: Transaction endpoints
+  - name: Specification
+    description: The swagger API specification
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  SendToAddressBody:
+    type: object
+    title: SendToAddressBody
+    reqiured:
+      - address
+      - amount
+    properties:
+      address:
+        type: string
+        example: "1M72Sfpbz1BPpXFHz9m3CdqATR44Jvaydd"
+      amount:
+        type: number
+        example: 0.1
+  GetTransactionBody:
+    type: object
+    title: GetTransactionBody
+    reqiured:
+      - txid
+    properties:
+      txid:
+        type: string
+        example: "1075db55d416d3ca199f55b6084e2115b9345e16c5cf302fc80e9d5fbf5d48d"
+
+paths:
+  /address/getnewaddress:
+    post:
+      tags:
+        - Address
+      responses:
+        200:
+          description: Returns string with new address
+
+  /address/sendtoaddress:
+    post:
+      tags:
+        - Address
+      parameters:
+        - name: reqBody
+          in: body
+          description: bitcoin address & amount
+          required: true
+          schema:
+            $ref: "#/definitions/SendToAddressBody"
+      responses:
+        200:
+          description: Returns the transaction hash if successful
+
+  /transaction/gettransaction:
+    post:
+      tags:
+        - Transaction
+      parameters:
+        - name: reqBody
+          in: body
+          description: transaction id
+          required: true
+          schema:
+            $ref: "#/definitions/GetTransactionBody"
+      responses:
+        200:
+          description: Returns an object about the given transaction hash
+
+  /spec:
+    get:
+      tags:
+        - Specification
+      responses:
+        200:
+          description: Return the API specification
