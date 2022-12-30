@@ -36,7 +36,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prettier": "^3.1.1",
     "jest": "^24.9.0",
-    "mocha": "^6.2.1",
+    "mocha": "^10.2.0",
     "moxios": "^0.4.0",
     "nodemon": "^1.19.3",
     "pino-pretty": "^3.2.1",
